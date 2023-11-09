@@ -268,7 +268,7 @@ customer> db.customerdetails.find({$and:[{age:{$lt:25}},{gender:"male"}]})
 
 ```
 
-** 12.Update Francis age to 35, if Francis is not available upsert. **
+**12.Update Francis age to 35, if Francis is not available upsert.**
 
 
 ```
@@ -285,7 +285,7 @@ customer>
 
 ```
 
-** 13.Retrieve males who are younger than 30 and older than25. **
+**13.Retrieve males who are younger than 30 and older than25.**
 
 ```
 customer> db.customerdetails.find({$and:[{gender:"male"},{age:{$gt:25,$lt:30}}]})
@@ -314,7 +314,7 @@ customer> db.customerdetails.find({$and:[{gender:"male"},{age:{$gt:25,$lt:30}}]}
 ]
 ```
 
-** 14.Find a customer who is lesser than or equal to 23.**
+**14.Find a customer who is lesser than or equal to 23.**
 
 ```
 customer> db.customerdetails.find({age:{$lte:23}})
@@ -366,7 +366,7 @@ customer> db.customerdetails.find({age:{$lte:23}})
   }
 ]
 ```
-** 15.Remove the customer from Tokyo.**
+**15.Remove the customer from Tokyo.**
 
 ```
 customer> db.customerdetails.remove({name:"james",age:30,gender:"male",city:"tokyo"})
