@@ -1,7 +1,5 @@
 ** 
-
 01 Create a Database called customers
-
 **
 ```
 test> use customers
