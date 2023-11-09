@@ -270,3 +270,122 @@ customers> db.customerdetails.find({age:{$gt:25}})
 
 ```
 
+**
+11.Retrieve the males who are less than 25.
+
+**
+```
+customer> db.customerdetails.find({$and:[{age:{$lt:25}},{gender:"male"}]})
+[
+  {
+    _id: ObjectId("654d59299c7462baa06abdf3"),
+    name: 'nilax',
+    age: 23,
+    gender: 'male',
+    city: 'jaffna'
+  }
+]
+
+```
+
+** 12.Update Francis age to 35, if Francis is not available upsert. **
+```
+
+customer> db.customerdetails.update({name:"franics"},{$set:{age:30}},{uupsert:true})
+{
+  acknowledged: true,
+  insertedId: ObjectId("654d69864ac3fbc6979cd606"),
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 1
+}
+customer> 
+
+```
+
+** 13.Retrieve males who are younger than 30 and older than25. **
+```
+customer> db.customerdetails.find({$and:[{gender:"male"},{age:{$gt:25,$lt:30}}]})
+[
+  {
+    _id: ObjectId("654d58e09c7462baa06abdec"),
+    name: 'daniel',
+    age: 28,
+    gender: 'male',
+    city: 'sydney'
+  },
+  {
+    _id: ObjectId("654d58e09c7462baa06abdee"),
+    name: 'wiliam',
+    age: 26,
+    gender: 'male',
+    city: 'chicago'
+  },
+  {
+    _id: ObjectId("654d58e09c7462baa06abdf0"),
+    name: 'benjamin',
+    age: 27,
+    gender: 'male',
+    city: 'toronto'
+  }
+]
+```
+
+** 
+14.Find a customer who is lesser than or equal to 23.
+**
+```
+customer> db.customerdetails.find({age:{$lte:23}})
+[
+  {
+    _id: ObjectId("654d58e09c7462baa06abdeb"),
+    name: 'emily',
+    age: 22,
+    gender: 'female',
+    city: 'london'
+  },
+  {
+    _id: ObjectId("654d58e09c7462baa06abdef"),
+    name: 'Olivia',
+    age: 23,
+    gender: 'female',
+    city: 'los angeles'
+  },
+  {
+    _id: ObjectId("654d59299c7462baa06abdf3"),
+    name: 'nilax',
+    age: 23,
+    gender: 'male',
+    city: 'jaffna'
+  }
+]
+customer> db.customerdetails.find({age:{$lte:23}})
+[
+  {
+    _id: ObjectId("654d58e09c7462baa06abdeb"),
+    name: 'emily',
+    age: 22,
+    gender: 'female',
+    city: 'london'
+  },
+  {
+    _id: ObjectId("654d58e09c7462baa06abdef"),
+    name: 'Olivia',
+    age: 23,
+    gender: 'female',
+    city: 'los angeles'
+  },
+  {
+    _id: ObjectId("654d59299c7462baa06abdf3"),
+    name: 'nilax',
+    age: 23,
+    gender: 'male',
+    city: 'jaffna'
+  }
+]
+```
+** 15.Remove the customer from Tokyo.**
+```
+customer> db.customerdetails.remove({name:"james",age:30,gender:"male",city:"tokyo"})
+{ acknowledged: true, deletedCount: 0 }
+```
