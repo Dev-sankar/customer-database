@@ -7,18 +7,17 @@ switched to db customers
 
 ```
 
-** 
-02 Create a collection called customerdetails.
-**
+
+**02 Create a collection called customerdetails.**
+
 ```
 customers> db.createCollection("customerdetails")
 { ok: 1 }
 
 ```
-**
-3. Insert all documents into the collection named   customerdetails.
+**3. Insert all documents into the collection named   customerdetails.**
 
-**
+
 
 ```
 customers> db.customerdetails.insertMany([{name:"john",age:25,gender:"male",city:"new york"},{name:"emily",age:22,gender:"female",city:"london"},{name:"daniel",age:28,gender:"male",city:"sydney"},{name:"sophia",age:24,gender:"female",city:"paris"},{name:"wiliam",age:26,gender:"male",city:"chicago"},{name:"Olivia",age:23,gender:"female",city:"los angeles"},{name:"benjamin",age:27,gender:"male",city:"toronto"},{name:"mila",age:29,gender:"female",city:"berlin"},{name:"james",age:30,gender:"male",city:"tokyo"}])
@@ -39,10 +38,9 @@ customers> db.customerdetails.insertMany([{name:"john",age:25,gender:"male",city
 
 
 ```
-**
-4. Retrieve all documents from the collection and sort the results by the “age” field    in ascending order
 
-**
+**4. Retrieve all documents from the collection and sort the results by the “age” field    in ascending order**
+
 
 ```
 customers> db.customerdetails.find().sort({ age: 1 }).pretty()
@@ -114,19 +112,15 @@ customers> db.customerdetails.find().sort({ age: 1 }).pretty()
 
 ```
 
-**
-5. Count the number of females. 
 
-**
+**5. Count the number of females. **
 
 ```
 customers> db.customerdetails.countDocuments({gender:"female"})
 4
 ```
 
-**
-6.Insert one document into the customerdetails collection
-**
+**6.Insert one document into the customerdetails collection**
 ```
 customers> db.customerdetails.insertOne({name:"nilax",age:23,gender:"male",city:"jaffna" })
 {
@@ -135,9 +129,7 @@ customers> db.customerdetails.insertOne({name:"nilax",age:23,gender:"male",city:
 }
 
 ```
-**
-7. Update city=SriLanka to John.
-**
+**7. Update city=SriLanka to John.**
 ```
 customers> db.customerdetails.update({name:"john",age:25,gender:"male"},{$set:{city:"jaffna"}},{upsert:true})
 DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
@@ -151,9 +143,7 @@ DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany
 
 ```
 
-**
-8. Remove the customer from Tokyo.
-**
+**8. Remove the customer from Tokyo.**
 
 ```
 customers> db.customerdetails.remove({city:"tokyo"})
@@ -162,15 +152,13 @@ DeprecationWarning: Collection.remove() is deprecated. Use deleteOne, deleteMany
 
 ```
 
-**
-9.  Find customers not from Los Angeles.
-
-**
+**9.  Find customers not from Los Angeles.**
 
 ```
 customers> db.customerdetails.find({city:{$ne:"los angeles"}})
 [
   {
+
     _id: ObjectId("654ca4b30da73a2f96d37eec"),
     name: 'john',
     age: 25,
@@ -229,10 +217,7 @@ customers> db.customerdetails.find({city:{$ne:"los angeles"}})
 ]
 
 ```
-**
-10.Find the customers who are older than age 25.
-
-**
+**10.Find the customers who are older than age 25.**
 ```
 customers> db.customerdetails.find({age:{$gt:25}})
 [
@@ -268,10 +253,7 @@ customers> db.customerdetails.find({age:{$gt:25}})
 
 ```
 
-**
-11.Retrieve the males who are less than 25.
-
-**
+**11.Retrieve the males who are less than 25.**
 ```
 customer> db.customerdetails.find({$and:[{age:{$lt:25}},{gender:"male"}]})
 [
@@ -329,9 +311,7 @@ customer> db.customerdetails.find({$and:[{gender:"male"},{age:{$gt:25,$lt:30}}]}
 ]
 ```
 
-** 
-14.Find a customer who is lesser than or equal to 23.
-**
+** 14.Find a customer who is lesser than or equal to 23.** 
 ```
 customer> db.customerdetails.find({age:{$lte:23}})
 [
@@ -383,6 +363,7 @@ customer> db.customerdetails.find({age:{$lte:23}})
 ]
 ```
 ** 15.Remove the customer from Tokyo.**
+
 ```
 customer> db.customerdetails.remove({name:"james",age:30,gender:"male",city:"tokyo"})
 { acknowledged: true, deletedCount: 0 }
